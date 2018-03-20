@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Jacket"
+        android:text="@string/jacket"
         app:layout_constraintBottom_toTopOf="@+id/RandomBtn"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Random"
+        android:text="@string/random"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -43,6 +43,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?android:attr/floatingToolbarOpenDrawable" />
+        app:srcCompat="?android:attr/floatingToolbarOpenDrawable" android:contentDescription="@string/todo" />
 
 </android.support.constraint.ConstraintLayout>
