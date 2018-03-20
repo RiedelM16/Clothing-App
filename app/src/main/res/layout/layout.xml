@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/TopsBtn"
+        android:layout_width="121dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="71dp"
+        android:text="Tops"
+        app:layout_constraintBottom_toTopOf="@+id/AccessoriesBtn"
+        app:layout_constraintEnd_toStartOf="@+id/BottomsBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BottomsBtn"
+        android:layout_width="121dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="71dp"
+        android:text="Bottoms"
+        app:layout_constraintBottom_toTopOf="@+id/ShoesBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TopsBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/AccessoriesBtn"
+        android:layout_width="121dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="22dp"
+        android:text="Accesories"
+        app:layout_constraintBottom_toTopOf="@+id/OutterWearBtn"
+        app:layout_constraintEnd_toStartOf="@+id/ShoesBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TopsBtn" />
+
+    <Button
+        android:id="@+id/ShoesBtn"
+        android:layout_width="121dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:text="Shoes"
+        app:layout_constraintBottom_toTopOf="@+id/DressesBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AccessoriesBtn"
+        app:layout_constraintTop_toBottomOf="@+id/BottomsBtn" />
+
+    <Button
+        android:id="@+id/OutterWearBtn"
+        android:layout_width="121dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="52dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="13dp"
+        android:text="Outterwear"
+        app:layout_constraintBottom_toTopOf="@+id/NewBtn"
+        app:layout_constraintEnd_toStartOf="@+id/DressesBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccessoriesBtn" />
+
+    <Button
+        android:id="@+id/DressesBtn"
+        android:layout_width="116dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="52dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:text="Dresses"
+        app:layout_constraintBottom_toTopOf="@+id/NewBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/OutterWearBtn"
+        app:layout_constraintTop_toBottomOf="@+id/ShoesBtn" />
+
+    <Button
+        android:id="@+id/NewBtn"
+        android:layout_width="265dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="New +"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
