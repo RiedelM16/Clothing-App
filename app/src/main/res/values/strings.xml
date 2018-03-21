@@ -12,4 +12,5 @@
     <string name="newBtn">New +</string>
     <string name="closet">Closet</string>
     <string name="desc">Open Closet</string>
+    <string name="camera">Camera</string>
 </resources>

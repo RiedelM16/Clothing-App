@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button ClosetBtns = (Button) findViewById(R.id.ClosetBtn);
-        ClosetBtns.setOnClickListener(new View.OnClickListener() {
+        Button ClosetBtn = (Button) findViewById(R.id.ClosetBtn);
+        ClosetBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 setContentView(R.layout.layout);
