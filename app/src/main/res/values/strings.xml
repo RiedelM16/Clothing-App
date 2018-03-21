@@ -6,11 +6,14 @@
     <string name="tops">Tops</string>
     <string name="bottoms">Bottoms</string>
     <string name="shoes">Shoes</string>
-    <string name="accesories">Accesories</string>
+    <string name="accesories">Accessories</string>
     <string name="outterwear">Outterwear</string>
     <string name="dresses">Dresses</string>
     <string name="newBtn">New +</string>
     <string name="closet">Closet</string>
     <string name="desc">Open Closet</string>
     <string name="camera">Camera</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
 </resources>
