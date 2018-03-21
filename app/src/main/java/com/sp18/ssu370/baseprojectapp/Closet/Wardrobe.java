@@ -23,7 +23,7 @@ public class Wardrobe {
         Tag newtag = new Tag();
         newtag.setName(name);
         for (int i = 0; i < tags.size(); i++) {
-            //add pro con from current set of tags
+            /*
             if(tags.get(i) == PRO) {
                 newtag.addPro(tags.get(i).getName());
                 tags.get(i).addPro(name);
@@ -32,6 +32,7 @@ public class Wardrobe {
                 newtag.addCon(tags.get(i).getName());
                 tags.get(i).addCon(name);
             }
+            */
 
         }
         tags.add(newtag);
@@ -43,16 +44,16 @@ public class Wardrobe {
         Article cloth = new Article();
 
         //user inout required
-        cloth.setLocation(GetLocation());
-        cloth.setImage(GetImage());
+        //cloth.setLocation(GetLocation());
+        //cloth.setImage(GetImage());
 
 
         //get tags
         while (true) {
             boolean done = false;
-            String addtag;
+            String addtag = "";
             //get user string input
-            addtag = GetTagName();
+            //addtag = GetTagName();
             boolean intags = false;
             for (int i = 0; i < tags.size(); i++) {
                 if (addtag == tags.get(i).getName()) {
