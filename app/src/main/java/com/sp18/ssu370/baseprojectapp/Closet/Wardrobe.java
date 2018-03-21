@@ -23,6 +23,7 @@ public class Wardrobe {
         Tag newtag = new Tag();
         newtag.setName(name);
         for (int i = 0; i < tags.size(); i++) {
+            //add pro con from current set of tags
             if(tags.get(i) == PRO) {
                 newtag.addPro(tags.get(i).getName());
                 tags.get(i).addPro(name);
