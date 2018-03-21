@@ -7,6 +7,8 @@ import com.sp18.ssu370.baseprojectapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

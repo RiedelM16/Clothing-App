@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class Article {
 
-    private Image image;
     private ArrayList<Tag> tags;
     private int location; //upper, lower, jump suit
+    private Image image;
 
     Article() {
         this.image = null;
