@@ -2,41 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/holo_green_dark">
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_gravity="center_horizontal"
-        android:textSize="28sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-
-        android:id="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:minLines="2"
-        android:id="@+id/textView2"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:minLines="2"
-        android:id="@+id/textView3"
-    />
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/men" />
 
 </LinearLayout>
