@@ -25,7 +25,16 @@ public class layoutClass extends AppCompatActivity {
         topsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(layoutClass.this, tops_page.class);
+                Intent intent = new Intent(layoutClass.this, TopsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button bottomsBtn = (Button) findViewById(R.id.BottomsBtn);
+        bottomsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(layoutClass.this, BottomsActivity.class);
                 startActivity(intent);
             }
         });

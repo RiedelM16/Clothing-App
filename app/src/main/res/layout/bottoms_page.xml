@@ -22,7 +22,7 @@
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <Button
-        android:id="@+id/NewBtnTops"
+        android:id="@+id/NewBtnBottoms"
         android:layout_width="265dp"
         android:layout_height="57dp"
         android:layout_marginBottom="16dp"

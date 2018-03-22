@@ -34,9 +34,27 @@
             </intent-filter>
         </activity>
         <!-- __________________________ -->
-        <activity android:name=".ui.activities.tops_page">
+        <activity android:name=".ui.activities.TopsActivity">
             <intent-filter>
-                <action android:name="android.intent.action.LayoutClass" />
+                <action android:name="android.intent.action.TopsActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.BottomsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.BottomsActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.CameraForTops">
+            <intent-filter>
+                <action android:name="android.intent.action.Camera" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.CameraForBottoms">
+            <intent-filter>
+                <action android:name="android.intent.action.Camera" />
             </intent-filter>
         </activity>
     </application>
