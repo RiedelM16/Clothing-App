@@ -19,6 +19,7 @@
     <string name="blueLabel">Random Outfit #2</string>
     <string name="redLabel">Random Outfit #1</string>
     <string name="greenLabel">Random Outfit #3</string>
+    <string name="backBtn">Back</string>
 
     <string name="take_picture">Take picture</string>
 

@@ -9,28 +9,34 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- __________________________ -->
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- __________________________ -->
         <activity android:name=".ui.activities.layoutClass">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.LayoutClass" />
             </intent-filter>
         </activity>
+        <!-- __________________________ -->
         <activity android:name=".ui.activities.AndroidCameraApi">
             <intent-filter>
                 <action android:name="android.intent.action.Camera" />
-                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- __________________________ -->
+        <activity android:name=".ui.activities.tops_page">
+            <intent-filter>
+                <action android:name="android.intent.action.LayoutClass" />
             </intent-filter>
         </activity>
     </application>

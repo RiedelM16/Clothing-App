@@ -9,9 +9,9 @@ import com.sp18.ssu370.baseprojectapp.R;
  */
 
 public enum ClothesObject {
-    TOPS(R.string.tops_camera, R.layout.view_red),
-    BOTTOMS(R.string.bottoms_camera, R.layout.view_blue),
-    ACCESSORIES(R.string.accessories_camera, R.layout.view_green),
+    TOPS(R.string.tops_camera, R.layout.tops_view),
+    BOTTOMS(R.string.bottoms_camera, R.layout.bottoms_view),
+    ACCESSORIES(R.string.accessories_camera, R.layout.accessories_view),
     SHOES(R.string.shoes_camera, R.layout.shoes_view),
     OUTERWEAR(R.string.outerwear_camera, R.layout.outerwear_view),
     DRESSES(R.string.dresses_camera, R.layout.dresses_view);

@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ClosetBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                setContentView(R.layout.layout);
+                Intent intent = new Intent(MainActivity.this, layoutClass.class);
+                startActivity(intent);
             }
         });
     }
