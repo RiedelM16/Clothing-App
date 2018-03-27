@@ -172,7 +172,8 @@ public class CameraForTops extends AppCompatActivity {
             // Orientation
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
-            // if statement here for saving different images like tops in different directories
+            // if statement here for saving different im
+            // ages like tops in different directories
             /*
                if(getUserVisibleHint()){
                     //Your fragment is visible
@@ -182,7 +183,10 @@ public class CameraForTops extends AppCompatActivity {
 
              */
             //     Toast.makeText(CameraForTops.this, "Tops View:", Toast.LENGTH_SHORT).show();
-            final File file = new File(Environment.getExternalStorageDirectory() + "/OutfitMatcher/tops/img" + System.currentTimeMillis () +".jpg");
+            File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops");
+            directory.mkdirs();
+
+            final File file = new File(Environment.getExternalStorageDirectory()+File.separator+"/OutfitMatcher/tops" + "/img" + System.currentTimeMillis () +".jpg");
 
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override

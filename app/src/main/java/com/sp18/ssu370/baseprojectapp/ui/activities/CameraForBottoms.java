@@ -182,7 +182,11 @@ public class CameraForBottoms extends AppCompatActivity {
 
              */
             //     Toast.makeText(CameraForBottoms.this, "Tops View:", Toast.LENGTH_SHORT).show();
-            final File file = new File(Environment.getExternalStorageDirectory() + "/OutfitMatcher/bottoms/img" + System.currentTimeMillis () +".jpg");
+
+            File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
+            directory.mkdirs();
+
+            final File file = new File(Environment.getExternalStorageDirectory()+File.separator+"/OutfitMatcher/bottoms" + "/img" + System.currentTimeMillis () +".jpg");
 
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
