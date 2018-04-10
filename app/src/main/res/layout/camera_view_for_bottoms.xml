@@ -24,9 +24,10 @@
 
     <!-- create the picture outlines -->
     <ImageView
+        android:id="@+id/pantsoutline"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/pantsoutline"/>
+        android:src="@drawable/pantsoutline" />
 
 </RelativeLayout>

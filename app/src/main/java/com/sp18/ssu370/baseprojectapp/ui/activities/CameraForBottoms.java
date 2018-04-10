@@ -4,6 +4,12 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
  * Created by Gabri on 3/21/2018.
  */
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.view.View;
 
 import com.sp18.ssu370.baseprojectapp.R;
@@ -45,6 +51,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 public class CameraForBottoms extends AppCompatActivity {
     private static final String TAG = "CameraForBottoms";
     private Button takePictureButton;
@@ -144,6 +151,27 @@ public class CameraForBottoms extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    //------------------------------------------------------------------------------------------------------------
+    // This is where i put the masking code and not sure if i was supposed to put it outside this file
+    // and put it inside the BottomsActivity instead
+    public void draw(Canvas canvas) {
+        Bitmap original = BitmapFactory.decodeResource(this.getResources(),R.drawable.testshirt);
+        Bitmap mask = BitmapFactory.decodeResource(this.getResources(),R.drawable.pantsoutlines);
+
+        //You can change original image here and draw anything you want to be masked on it.
+
+        Bitmap result = Bitmap.createBitmap(mask.getWidth(), mask.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas tempCanvas = new Canvas(result);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        tempCanvas.drawBitmap(original, 0, 0, null);
+        tempCanvas.drawBitmap(mask, 0, 0, paint);
+        paint.setXfermode(null);
+
+        //Draw result after performing masking
+        canvas.drawBitmap(result, 0, 0, new Paint());
+    }
+    //------------------------------------------------------------------------------------------------------------
     protected void takePicture() {
         if(null == cameraDevice) {
             Log.e(TAG, "cameraDevice is null");
@@ -172,15 +200,7 @@ public class CameraForBottoms extends AppCompatActivity {
             // Orientation
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
-            // if statement here for saving different images like tops in different directories
-            /*
-               if(getUserVisibleHint()){
-                    //Your fragment is visible
-                }else{
-                    // Not visible
-}
 
-             */
             //     Toast.makeText(CameraForBottoms.this, "Tops View:", Toast.LENGTH_SHORT).show();
 
             File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
