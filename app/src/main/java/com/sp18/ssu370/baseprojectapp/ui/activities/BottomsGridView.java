@@ -42,8 +42,8 @@ public class BottomsGridView extends Activity {
         // Get the column index of the Thumbnails Image ID
         columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Thumbnails._ID);
 
-        GridView sdcardImages = (GridView) findViewById(R.id.gridview_bottoms);
-        sdcardImages.setAdapter(new ImageAdapter(BottomsGridView.this));
+        //GridView sdcardImages = (GridView) findViewById(R.id.gridview_bottoms);
+        //sdcardImages.setAdapter(new ImageAdapter(BottomsGridView.this));
 
 
     }
