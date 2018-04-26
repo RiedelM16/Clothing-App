@@ -9,6 +9,7 @@
     <string name="accesories">Accessories</string>
     <string name="outterwear">Outerwear</string>
     <string name="dresses">Dresses</string>
+    <string name="tags">Tags</string>
     <string name="newBtn">New +</string>
     <string name="closet">Closet</string>
     <string name="desc">Open Closet</string>
@@ -16,10 +17,21 @@
     <string name="red">Red</string>
     <string name="blue">Blue</string>
     <string name="green">Green</string>
+
+    <string name="gl">Girl Large</string>
+    <string name="GIRLSMALL">Girl Small</string>
+    <string name="GIRLMEDIUM">Girl Medium</string>
+    <string name="GUYSMALL">Guy Small</string>
+    <string name="GUYMEDIUM">Guy Medium</string>
+    <string name="GUYLARGE">Guy Large</string>
+
     <string name="blueLabel">Random Outfit #2</string>
     <string name="redLabel">Random Outfit #1</string>
     <string name="greenLabel">Random Outfit #3</string>
     <string name="backBtn">Back</string>
+    <string name="bar">BAR</string>
+
+    <string name="first_run">Lets start by picking a mannequin</string>
 
     <string name="take_picture">Take picture</string>
 

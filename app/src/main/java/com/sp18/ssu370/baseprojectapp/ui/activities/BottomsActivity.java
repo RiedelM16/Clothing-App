@@ -47,9 +47,9 @@ public class BottomsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottoms_page);
 
-        ImageView targetImageView = (ImageView) findViewById(R.id.imgView);
-        File file = new File(Environment.getExternalStorageDirectory(), "/" + "OutfitMatcher/" + "bottoms/" + "blog_image_1.jpg");
-        Glide.with(this).load(file).into(targetImageView);
+        //ImageView targetImageView = (ImageView) findViewById(R.id.imgView);
+        //File file = new File(Environment.getExternalStorageDirectory(), "/" + "OutfitMatcher/" + "bottoms/" + "google.jpg");
+        //Glide.with(this).load(file).into(targetImageView);
 
 /*
         String fileName = "running.jpg";
