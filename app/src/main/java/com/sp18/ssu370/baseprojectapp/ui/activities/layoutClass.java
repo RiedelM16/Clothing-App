@@ -39,6 +39,42 @@ public class layoutClass extends AppCompatActivity {
             }
         });
 
+        Button accBtn = (Button) findViewById(R.id.AccessoriesBtn);
+        accBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(layoutClass.this, AccessoriesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button shoesBtn = (Button) findViewById(R.id.ShoesBtn);
+        shoesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(layoutClass.this, ShoesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button outerwearBtn = (Button) findViewById(R.id.OutterWearBtn);
+        outerwearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(layoutClass.this, OuterWearActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button dressesBtn = (Button) findViewById(R.id.DressesBtn);
+        dressesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(layoutClass.this, DressesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ImageButton backBtn = findViewById(R.id.BackBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
 

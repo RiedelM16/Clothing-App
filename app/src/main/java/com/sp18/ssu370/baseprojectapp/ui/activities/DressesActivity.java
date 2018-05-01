@@ -19,27 +19,27 @@ import java.util.ArrayList;
 /**
  * Created by Gabri on 3/21/2018.
  */
+public class DressesActivity extends AppCompatActivity{
 
-public class BottomsActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1888;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bottoms_page);
+        setContentView(R.layout.dresses_page);
 
 
-        final RecyclerView rv= (RecyclerView) findViewById(R.id.bottoms_rv);
+        final RecyclerView rv= (RecyclerView) findViewById(R.id.dresses_rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new MyAdapter(BottomsActivity.this,getData()));
+        rv.setAdapter(new MyAdapter(DressesActivity.this,getData()));
 
 
         ImageButton backBtn = findViewById(R.id.BackBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(BottomsActivity.this, layoutClass.class);
+                Intent intent = new Intent(DressesActivity.this, layoutClass.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +48,7 @@ public class BottomsActivity extends AppCompatActivity {
         newBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BottomsActivity.this, CameraForBottoms.class);
+                Intent intent = new Intent(DressesActivity.this, CameraForDresses.class);
                 // Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, CAMERA_REQUEST);
             }
@@ -60,7 +60,7 @@ public class BottomsActivity extends AppCompatActivity {
         ArrayList<loadImg> loadingImg=new ArrayList<>();
         //TARGET FOLDER
 
-        File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
+        File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/dresses");
 
         loadImg s;
 

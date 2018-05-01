@@ -47,6 +47,30 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activities.ShoesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ShoesActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.AccessoriesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.AccessoriesActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.OuterWearActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.OuterWearActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.DressesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.DressesActivity" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".ui.activities.CameraForTops">
             <intent-filter>
                 <action android:name="android.intent.action.Camera" />
@@ -54,6 +78,30 @@
         </activity>
 
         <activity android:name=".ui.activities.CameraForBottoms">
+            <intent-filter>
+                <action android:name="android.intent.action.Camera" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.CameraForAccessories">
+            <intent-filter>
+                <action android:name="android.intent.action.Camera" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.CameraForDresses">
+            <intent-filter>
+                <action android:name="android.intent.action.Camera" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.CameraForOuterwear">
+            <intent-filter>
+                <action android:name="android.intent.action.Camera" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.CameraForShoes">
             <intent-filter>
                 <action android:name="android.intent.action.Camera" />
             </intent-filter>

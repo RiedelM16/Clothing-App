@@ -7,10 +7,10 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/tops_rv"
+        android:id="@+id/accessories_rv"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/main_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/NewBtnBottoms"
+        app:layout_constraintBottom_toTopOf="@id/NewBtnAccessories"
         android:layout_height="wrap_content"
         />
 
@@ -30,7 +30,7 @@
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <Button
-        android:id="@+id/NewBtnTops"
+        android:id="@+id/NewBtnAccessories"
         android:layout_width="265dp"
         android:layout_height="57dp"
         android:layout_marginBottom="16dp"
