@@ -41,4 +41,8 @@
     <string name="accessories_camera">Accessories</string>
     <string name="dresses_camera">Dresses</string>
     <string name="outerwear_camera">Outerwear</string>
+
+    <string name="title_location_permission">Location Permissions</string>
+    <string name="text_location_permission">Please Gib Location Permissions</string>
+    <string name="ok">OK</string>
 </resources>
