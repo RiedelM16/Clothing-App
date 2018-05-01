@@ -13,6 +13,7 @@ import android.text.Html;
 import android.widget.TextView;
 
 
+
 import com.sp18.ssu370.baseprojectapp.R;
 
 public class MainActivity extends AppCompatActivity {
