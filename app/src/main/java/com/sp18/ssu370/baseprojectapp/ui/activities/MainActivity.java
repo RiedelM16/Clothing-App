@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences prefs = null;
     LocationManager locationManager;
     String provider;
+    DatabaseHelper articleDB;
+    TagDatabaseHelper tagDB;
 
 
     private FusedLocationProviderClient mFusedLocationClient;
@@ -181,7 +183,8 @@ public class MainActivity extends AppCompatActivity {
         prefs = getSharedPreferences("com.mycompany.OutfitMatcher", MODE_PRIVATE);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        articleDB = new DatabaseHelper(this);
+        tagDB = new TagDatabaseHelper(this);
         provider = locationManager.getBestProvider(new Criteria(), false);
         checkLocationPermission();
 

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.sp18.ssu370.baseprojectapp.Closet.Tag;
 import com.sp18.ssu370.baseprojectapp.R;
 
 /**
@@ -80,6 +81,15 @@ public class layoutClass extends AppCompatActivity {
 
             public void onClick(View v) {
                 Intent intent = new Intent(layoutClass.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button tagsBtn = findViewById(R.id.NewBtn);
+        tagsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(layoutClass.this, TagActivity.class );
                 startActivity(intent);
             }
         });

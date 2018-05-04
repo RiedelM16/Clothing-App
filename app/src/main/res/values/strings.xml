@@ -45,4 +45,11 @@
     <string name="title_location_permission">Location Permissions</string>
     <string name="text_location_permission">Please Gib Location Permissions</string>
     <string name="ok">OK</string>
+    <string name="article">Article</string>
+    <string name="tag_title">Tags</string>
+    <string name="edit_tag">Type tag name</string>
+    <string name="edit_location">Type a location</string>
+    <string name="edit_season">Type the season</string>
+    <string name="printBtn">Print</string>
+    <string name="edit_con">Add list of con tag ids</string>
 </resources>
