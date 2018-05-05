@@ -5,7 +5,8 @@
     android:id="@+id/edit_tag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:windowSoftInputMode="adjustNothing">
 
     <TextView
         android:id="@+id/tags"
@@ -50,13 +51,14 @@
         android:layout_width="265dp"
         android:layout_height="57dp"
         android:layout_marginBottom="15dp"
-        android:text="@string/printBtn"
+        android:text="CLEAR DB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:windowSoftInputMode="adjustNothing"/>
 
 
     <android.support.v7.widget.RecyclerView
@@ -67,20 +69,22 @@
         app:layout_constraintBottom_toTopOf="@+id/add_db"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_con_text" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_con_text"
+        android:windowSoftInputMode="adjustNothing"/>
 
     <Button
         android:id="@+id/add_db"
         android:layout_width="265dp"
         android:layout_height="57dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/tags"
+        android:text="ADD TO DB"
         app:layout_constraintBottom_toTopOf="@+id/search_db"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:windowSoftInputMode="adjustNothing"/>
 
 
 </android.support.constraint.ConstraintLayout>

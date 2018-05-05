@@ -1,12 +1,16 @@
 package com.sp18.ssu370.baseprojectapp.ui.activities;
 
+
 import android.database.Cursor;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,10 +24,24 @@ public class TagActivity extends MainActivity {
 
     private TagAdapter mAdapter;
 
+    public String convertToString(boolean[] bool){
+        StringBuffer con = new StringBuffer();
+        for (int i = 0; i < bool.length; i++){
+            if (bool[i]){
+                con.append("1");
+            }
+            else{
+                con.append("0");
+            }
+        }
+        return con.toString();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tag_view);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         TextView tags = (TextView) findViewById(R.id.tags);
 
@@ -32,16 +50,32 @@ public class TagActivity extends MainActivity {
         final RecyclerView tagcycle = findViewById(R.id.recycle_tag);
         tagcycle.setLayoutManager(new LinearLayoutManager(this));
 
+
         mAdapter = new TagAdapter(this, tagDB.getAllData());
         tagcycle.setAdapter(mAdapter);
+        //Add button
         Button add = (Button) findViewById(R.id.add_db);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tagName = tagname.getText().toString();
-                String con = conlist.getText().toString();
 
-                boolean inserted = tagDB.InsertData(tagName,con);
+                String tagName = tagname.getText().toString();
+                Cursor res = tagDB.getAllData();
+                String con;
+                boolean inserted;
+                if (res.getCount() == 0){
+                    inserted = tagDB.InsertData(tagName,"");
+                    con = conlist.getText().toString();
+                    //Toast.makeText(TagActivity.this, "DB is Empty", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    boolean[] cons = mAdapter.getChecked();
+                    con = convertToString(cons);
+                    inserted = tagDB.InsertData(tagName,con);
+                }
+
+
+
                 mAdapter.swapCursor(tagDB.getAllData());
 
                 if (inserted){
@@ -59,6 +93,7 @@ public class TagActivity extends MainActivity {
             @Override
             public void onClick(View v) {
                 Cursor res = tagDB.getAllData();
+                /*
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()){
                     buffer.append("ID: " + res.getString(0) + "\n");
@@ -66,13 +101,16 @@ public class TagActivity extends MainActivity {
                     buffer.append("Con IDs: " + res.getString(2) + "\n\n");
 
                 }
+                */
                 if (res.getCount() == 0){
-                    Toast.makeText(TagActivity.this, "READ IS NOT A SUCCESS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TagActivity.this, "DB is Empty", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    showMessage("Data", buffer.toString());
-                    int count = res.getCount();
-                    Toast.makeText(TagActivity.this, "READ IS A SUCCESS " + count, Toast.LENGTH_SHORT).show();
+                    //showMessage("Data", buffer.toString());
+                    //int count = res.getCount();
+                    int count = tagDB.deleteAll();
+                    mAdapter.swapCursor(tagDB.getAllData());
+                    Toast.makeText(TagActivity.this, "SUCCESSFULLY DELETED " + count + "TAGS", Toast.LENGTH_SHORT).show();
                 }
             }
         });

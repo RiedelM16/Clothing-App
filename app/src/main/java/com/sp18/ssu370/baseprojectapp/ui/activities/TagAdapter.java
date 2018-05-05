@@ -7,20 +7,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import com.sp18.ssu370.baseprojectapp.R;
 
 
 public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
     private Context mContext;
-    private  Cursor mcursor;
+    private  Cursor mCursor;
+    private boolean[] checked;
     public TagAdapter(Context context, Cursor cursor) {
     mContext = context;
-    mcursor = cursor;
+    mCursor = cursor;
+    checked = new boolean[cursor.getCount() + 1];
     }
     public class TagViewHolder extends RecyclerView.ViewHolder {
         public TextView tagname;
         public TextView conlist;
+        public CheckBox checkBox;
 
 
         public TagViewHolder(View itemView) {
@@ -28,7 +33,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
 
             tagname = itemView.findViewById(R.id.tag_name);
             conlist = itemView.findViewById(R.id.tag_con);
-
+            checkBox = itemView.findViewById(R.id.check_box);
         }
     }
 
@@ -42,11 +47,24 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TagViewHolder holder, int position) {
-        if(!mcursor.moveToPosition(position)){
+        final int pos = position;
+        if(!mCursor.moveToPosition(position)){
             return;
         }
-        String name = mcursor.getString(1);
-        String con = mcursor.getString(2);
+        checked = new boolean[mCursor.getCount()];
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    checked[pos] = true;
+                }
+                else{
+                    checked[pos] = false;
+                }
+            }
+        });
+        String name = mCursor.getString(1);
+        String con = mCursor.getString(2);
         holder.tagname.setText(name);
         holder.conlist.setText(con);
 
@@ -54,16 +72,18 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mcursor.getCount();
+        return mCursor.getCount();
     }
 
     public void swapCursor(Cursor newcursor) {
-        if (mcursor != null) {
-            mcursor.close();
+        if (mCursor != null) {
+            mCursor.close();
         }
-        mcursor = newcursor;
-        if (newcursor != null) {
-            notifyDataSetChanged();
-        }
+        mCursor = newcursor;
+        notifyDataSetChanged();
+    }
+
+    public boolean[] getChecked() {
+        return checked;
     }
 }

@@ -34,6 +34,10 @@ public class TagDatabaseHelper extends SQLiteOpenHelper{
         onCreate(Clothing);
     }
 
+    public int deleteAll(){
+        SQLiteDatabase Clothing = this.getWritableDatabase();
+        return Clothing.delete(TABLE_NAME,"1",null);
+    }
     public boolean InsertData(String name, String con) {
         SQLiteDatabase Clothing = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
