@@ -24,7 +24,7 @@
         android:id="@+id/edit_tag_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:imeOptions="actionDone"
         android:hint="@string/edit_tag"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,44 +33,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tags" />
 
-    <EditText
-        android:id="@+id/edit_con_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:hint="@string/edit_con"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_tag_text" />
 
     <Button
         android:id="@+id/search_db"
         android:layout_width="265dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="4dp"
         android:text="CLEAR DB"
+        android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:windowSoftInputMode="adjustNothing"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_tag"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
+        android:layout_height="279dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toTopOf="@+id/add_db"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_con_text"
-        android:windowSoftInputMode="adjustNothing"/>
+        app:layout_constraintTop_toBottomOf="@+id/edit_tag_text" />
 
     <Button
         android:id="@+id/add_db"

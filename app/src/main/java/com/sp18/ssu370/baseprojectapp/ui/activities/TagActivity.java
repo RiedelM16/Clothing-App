@@ -37,6 +37,28 @@ public class TagActivity extends MainActivity {
         return con.toString();
     }
 
+    public void updateSelectedTags(String con, Cursor res){
+        String newcon;
+        for (int i = 0; i < con.length(); i++)
+
+            if (con.charAt(i) == '1'){
+                res.moveToPosition(i);
+                newcon = res.getString(2);
+                StringBuffer buffer = new StringBuffer();
+                for (int j = 0; j < res.getCount()- newcon.length(); j++){
+                    buffer.append('0');
+                }
+                buffer.append('1');
+                newcon += buffer.toString();
+                boolean update = tagDB.updateData(res.getString(0),res.getString(1), newcon);
+                if (update){
+                    //Toast.makeText(TagActivity.this, "Update WAS GOOD", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +68,6 @@ public class TagActivity extends MainActivity {
         TextView tags = (TextView) findViewById(R.id.tags);
 
         final EditText tagname = (EditText) findViewById(R.id.edit_tag_text);
-        final EditText conlist = findViewById(R.id.edit_con_text);
         final RecyclerView tagcycle = findViewById(R.id.recycle_tag);
         tagcycle.setLayoutManager(new LinearLayoutManager(this));
 
@@ -64,14 +85,19 @@ public class TagActivity extends MainActivity {
                 String con;
                 boolean inserted;
                 if (res.getCount() == 0){
-                    inserted = tagDB.InsertData(tagName,"");
-                    con = conlist.getText().toString();
+                    inserted = tagDB.InsertData(tagName,"0");
+
                     //Toast.makeText(TagActivity.this, "DB is Empty", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    mAdapter.swapCursor(tagDB.getAllData());
                     boolean[] cons = mAdapter.getChecked();
                     con = convertToString(cons);
+
+                    updateSelectedTags(con, res);
+
                     inserted = tagDB.InsertData(tagName,con);
+
                 }
 
 
@@ -79,10 +105,11 @@ public class TagActivity extends MainActivity {
                 mAdapter.swapCursor(tagDB.getAllData());
 
                 if (inserted){
-                    Toast.makeText(TagActivity.this, "INSERT IS A SUCCESS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(TagActivity.this, "INSERT IS A SUCCESS", Toast.LENGTH_SHORT).show();
+                    tagname.setText("");
                 }
-                else
-                    Toast.makeText(TagActivity.this, "INSERT IS NOT A SUCCESS", Toast.LENGTH_SHORT).show();
+                //else
+                    //Toast.makeText(TagActivity.this, "INSERT IS NOT A SUCCESS", Toast.LENGTH_SHORT).show();
 
 
 
@@ -110,7 +137,7 @@ public class TagActivity extends MainActivity {
                     //int count = res.getCount();
                     int count = tagDB.deleteAll();
                     mAdapter.swapCursor(tagDB.getAllData());
-                    Toast.makeText(TagActivity.this, "SUCCESSFULLY DELETED " + count + "TAGS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TagActivity.this, "SUCCESSFULLY DELETED " + count + " TAGS", Toast.LENGTH_SHORT).show();
                 }
             }
         });

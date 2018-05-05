@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.sp18.ssu370.baseprojectapp.R;
 
 
@@ -20,7 +22,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
     public TagAdapter(Context context, Cursor cursor) {
     mContext = context;
     mCursor = cursor;
-    checked = new boolean[cursor.getCount() + 1];
+    checked = new boolean[cursor.getCount()];
     }
     public class TagViewHolder extends RecyclerView.ViewHolder {
         public TextView tagname;
@@ -51,10 +53,12 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
         if(!mCursor.moveToPosition(position)){
             return;
         }
-        checked = new boolean[mCursor.getCount()];
+        checked = new boolean[mCursor.getCount()+1];
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+
                 if (isChecked){
                     checked[pos] = true;
                 }
@@ -67,6 +71,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
         String con = mCursor.getString(2);
         holder.tagname.setText(name);
         holder.conlist.setText(con);
+        holder.checkBox.setChecked(false);
 
     }
 

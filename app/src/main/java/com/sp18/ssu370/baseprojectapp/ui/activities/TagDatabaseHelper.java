@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class TagDatabaseHelper extends SQLiteOpenHelper{
 
     public static final String DATABASE_NAME = "Tags.db";
-    public static final String TABLE_NAME = "Article";
+    public static final String TABLE_NAME = "Tag";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "Name";
     public static final String COL_3 = "Con";
@@ -50,14 +50,17 @@ public class TagDatabaseHelper extends SQLiteOpenHelper{
             return true;
     }
 
-    public boolean updateData(String id, String tag, String location, String season){
+    public boolean updateData(String id,String name, String con){
         SQLiteDatabase Clothing = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, id);
-        contentValues.put(COL_2, tag);
-        contentValues.put(COL_3, location);
-        Clothing.update(TABLE_NAME, contentValues, "ID = ?", new String[]{ id});
-        return true;
+        contentValues.put(COL_2, name);
+        contentValues.put(COL_3, con);
+        long result = Clothing.update(TABLE_NAME, contentValues, "ID = ?", new String[]{id});
+        if(result == -1)
+            return false;
+        else
+            return true;
     }
 
 
