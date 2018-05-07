@@ -1,13 +1,16 @@
 package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,18 +41,32 @@ public class ArticleActivity extends MainActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.swapCursor(tagDB.getAllData());
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article_view);
         location = getIntent().getStringExtra("location");
         final String path = getIntent().getStringExtra("file");
+
+        Resources res = getResources();
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        BitmapDrawable bd = new BitmapDrawable(res, bitmap);
         ImageView Iview = findViewById(R.id.article_img);
-        String compPath = Environment.getExternalStorageDirectory()+File.separator+ path;
+        Iview.setImageDrawable(bd);
+        /*
+        String compPath = getFilesDir()+ path;
         File imgFile = new File(compPath);
         if (imgFile.exists()){
+            ImageView Iview = findViewById(R.id.article_img);
             Iview.setImageURI(Uri.fromFile(imgFile));
 
         }
+        */
         //Uri imgUri = Uri.fromFile(imgFile);
         //Glide.with(this).load(imgUri).into(Iview);
 

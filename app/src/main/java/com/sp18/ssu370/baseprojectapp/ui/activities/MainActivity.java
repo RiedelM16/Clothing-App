@@ -2,6 +2,8 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -228,6 +230,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageButton RandBtn = findViewById(R.id.RandomBtn);
+        RandBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     Cursor articleData = articleDB.getAllData();
+                     Cursor tagData = tagDB.getAllData();
+                }
+        }
+        );
     }
 
     @Override

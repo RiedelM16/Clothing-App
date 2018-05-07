@@ -83,10 +83,7 @@ public class CameraForTops extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takePicture();
-                Intent intent = new Intent(CameraForTops.this, ArticleActivity.class );
-                intent.putExtra("location", "1");
-                intent.putExtra("file", filename);
-                startActivity(intent);
+
 
             }
         });
@@ -152,6 +149,8 @@ public class CameraForTops extends AppCompatActivity {
         }
     }
     protected void takePicture() {
+
+
         if(null == cameraDevice) {
             Log.e(TAG, "cameraDevice is null");
             return;
@@ -193,7 +192,7 @@ public class CameraForTops extends AppCompatActivity {
             File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops");
             directory.mkdirs();
 
-            filename = "/OutfitMatcher/tops" + "/img" + System.currentTimeMillis () +".jpg";
+            filename = "OutfitMatcher/tops" + "/img" + System.currentTimeMillis () +".jpg";
 
             final File file = new File(Environment.getExternalStorageDirectory()+File.separator+filename);
 
@@ -235,7 +234,12 @@ public class CameraForTops extends AppCompatActivity {
                 public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
                     Toast.makeText(CameraForTops.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
-                    createCameraPreview();
+                    Intent intent = new Intent(CameraForTops.this, ArticleActivity.class );
+                    intent.putExtra("location", "1");
+                    intent.putExtra("file", file.getAbsolutePath());
+                    startActivity(intent);
+                    //createCameraPreview();
+                    //closeCamera();
                 }
             };
             cameraDevice.createCaptureSession(outputSurfaces, new CameraCaptureSession.StateCallback() {
@@ -249,6 +253,7 @@ public class CameraForTops extends AppCompatActivity {
                 }
                 @Override
                 public void onConfigureFailed(CameraCaptureSession session) {
+                    //takePicture();
                 }
             }, mBackgroundHandler);
 
