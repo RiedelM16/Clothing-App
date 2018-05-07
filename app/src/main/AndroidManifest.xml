@@ -107,9 +107,16 @@
                 <action android:name="android.intent.action.Camera" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.activities.TagActivity">
             <intent-filter>
                 <action android:name="android.intent.action.TagActivity" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activities.ArticleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ArticleActivity" />
             </intent-filter>
         </activity>
     </application>

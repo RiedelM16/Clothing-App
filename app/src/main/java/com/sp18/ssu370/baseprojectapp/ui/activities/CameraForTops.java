@@ -4,6 +4,7 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
  * Created by Gabri on 3/21/2018.
  */
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import com.sp18.ssu370.baseprojectapp.R;
@@ -48,6 +49,7 @@ import java.util.List;
 public class CameraForTops extends AppCompatActivity {
     private static final String TAG = "CameraForTops";
     private Button takePictureButton;
+    private String filename;
     private TextureView textureView;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     static {
@@ -81,6 +83,11 @@ public class CameraForTops extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takePicture();
+                Intent intent = new Intent(CameraForTops.this, ArticleActivity.class );
+                intent.putExtra("location", "1");
+                intent.putExtra("file", filename);
+                startActivity(intent);
+
             }
         });
 
@@ -186,7 +193,9 @@ public class CameraForTops extends AppCompatActivity {
             File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops");
             directory.mkdirs();
 
-            final File file = new File(Environment.getExternalStorageDirectory()+File.separator+"/OutfitMatcher/tops" + "/img" + System.currentTimeMillis () +".jpg");
+            filename = "/OutfitMatcher/tops" + "/img" + System.currentTimeMillis () +".jpg";
+
+            final File file = new File(Environment.getExternalStorageDirectory()+File.separator+filename);
 
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
@@ -242,6 +251,7 @@ public class CameraForTops extends AppCompatActivity {
                 public void onConfigureFailed(CameraCaptureSession session) {
                 }
             }, mBackgroundHandler);
+
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
