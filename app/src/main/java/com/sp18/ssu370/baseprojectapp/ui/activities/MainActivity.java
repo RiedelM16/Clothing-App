@@ -37,10 +37,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
 
-
-=======
     TextView cityField,
              detailsField,
              currentTemperatureField,
@@ -162,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
->>>>>>> master
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
