@@ -2,70 +2,61 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
 import android.graphics.Typeface;
 import android.text.Html;
 import android.widget.TextView;
-
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.support.annotation.NonNull;
-import android.content.SharedPreferences;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.location.*;
 import android.location.LocationManager;
-import android.graphics.Typeface;
-import android.text.Html;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-
-
-
 import com.sp18.ssu370.baseprojectapp.R;
+
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import java.io.File;
+
+import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
 
     TextView cityField,
              detailsField,
              currentTemperatureField,
-             humidity_field,
-             pressure_field,
-             weatherIcon,
-             updatedField;
+             weatherIcon;
+
 
     Typeface weatherFont;
     SharedPreferences prefs = null;
     LocationManager locationManager;
     String provider;
 
+    private String[] FilePathStrings;
+    private String[] FileNameStrings;
+    private File[] listFile;
+    File file;
+
+    Random rand = new Random();
 
     private FusedLocationProviderClient mFusedLocationClient;
-
-
-
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-
 
     public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this,
@@ -93,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .create()
                         .show();
-
-
             } else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
@@ -149,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                                     String latitude = String.valueOf(lat);
                                     String longitude = String.valueOf(longi);
 
-
                                     asyncTask.execute(latitude, longitude);
 
                                 }
@@ -157,15 +145,12 @@ public class MainActivity extends AppCompatActivity {
                                     asyncTask.execute("25.180000", "89.530000"); //  asyncTask.execute("Latitude", "Longitude")
                             }
                         });
-
                     }
-
                 } else {
                     finish();
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-
                 }
                 return;
             }
@@ -184,15 +169,49 @@ public class MainActivity extends AppCompatActivity {
 
         provider = locationManager.getBestProvider(new Criteria(), false);
         checkLocationPermission();
+/*
+        String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms/img1524521290283.jpg";
+        Resources res = getResources();
+        Bitmap bitmap = BitmapFactory.decodeFile(pathName);
+        BitmapDrawable bd = new BitmapDrawable(res, bitmap);
+        View view = findViewById(R.id.placeHere);
+        view.setBackgroundDrawable(bd);
+*/
+        file = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
+
+        if (file.isDirectory()) {
+            listFile = file.listFiles();
+            // Create a String array for FilePathStrings
+            FilePathStrings = new String[listFile.length];
+            // Create a String array for FileNameStrings
+            FileNameStrings = new String[listFile.length];
+
+            int  n = rand.nextInt(listFile.length);
+
+            for (int i = 0; i < listFile.length; i++) {
+                // Get the path of the image file
+                FilePathStrings[i] = listFile[i].getAbsolutePath();
+                // Get the name image file
+                FileNameStrings[i] = listFile[i].getName();
+
+
+            }
+            String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms/"+listFile[n].getName();
+            Resources res = getResources();
+            Bitmap bitmap = BitmapFactory.decodeFile(pathName);
+            BitmapDrawable bd = new BitmapDrawable(res, bitmap);
+            View view = findViewById(R.id.placeHereShirt);
+            view.setBackgroundDrawable(bd);
+
+        }
+
+
 
         weatherFont = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/weathericons-regular-webfont.ttf");
 
         cityField = (TextView)findViewById(R.id.city_field);
-        //updatedField = (TextView)findViewById(R.id.updated_field);
         detailsField = (TextView)findViewById(R.id.details_field);
         currentTemperatureField = (TextView)findViewById(R.id.current_temperature_field);
-        //humidity_field = (TextView)findViewById(R.id.humidity_field);
-        //pressure_field = (TextView)findViewById(R.id.pressure_field);
         weatherIcon = (TextView)findViewById(R.id.weather_icon);
         weatherIcon.setTypeface(weatherFont);
 
@@ -281,6 +300,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-        }
+    }
 }

@@ -45,4 +45,6 @@
     <string name="title_location_permission">Location Permissions</string>
     <string name="text_location_permission">Please Gib Location Permissions</string>
     <string name="ok">OK</string>
+
+    <string name="placeHereShirt">placeHereShirt</string>
 </resources>

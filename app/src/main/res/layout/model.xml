@@ -14,30 +14,25 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/nameTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-
-            android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
- />
-        
         <ImageView
             android:id="@+id/loadImg"
             android:src="@drawable/testshirt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-
+            android:layout_height="0dp"
+            android:scaleType="centerInside"
             />
+
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:gravity="center_horizontal"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loadImg" />
 
 </android.support.constraint.ConstraintLayout>
 
