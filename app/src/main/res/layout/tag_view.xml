@@ -52,13 +52,13 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_tag"
         android:layout_width="match_parent"
-        android:layout_height="279dp"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toTopOf="@+id/add_db"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/edit_tag_text" />
 
     <Button

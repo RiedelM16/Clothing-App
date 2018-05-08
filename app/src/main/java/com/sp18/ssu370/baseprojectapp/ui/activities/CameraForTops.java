@@ -162,8 +162,8 @@ public class CameraForTops extends AppCompatActivity {
             if (characteristics != null) {
                 jpegSizes = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP).getOutputSizes(ImageFormat.JPEG);
             }
-            int width = 1920;
-            int height = 1080;
+            int width = 4032;
+            int height = 3024;
             if (jpegSizes != null && 0 < jpegSizes.length) {
                 width = jpegSizes[0].getWidth();
                 height = jpegSizes[0].getHeight();
@@ -213,6 +213,10 @@ public class CameraForTops extends AppCompatActivity {
                     } finally {
                         if (image != null) {
                             image.close();
+                            Intent intent = new Intent(CameraForTops.this, ArticleActivity.class );
+                            intent.putExtra("location", "1");
+                            intent.putExtra("file", file.getAbsolutePath());
+                            startActivity(intent);
                         }
                     }
                 }
@@ -233,11 +237,8 @@ public class CameraForTops extends AppCompatActivity {
                 @Override
                 public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
-                    Toast.makeText(CameraForTops.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CameraForTops.this, ArticleActivity.class );
-                    intent.putExtra("location", "1");
-                    intent.putExtra("file", file.getAbsolutePath());
-                    startActivity(intent);
+                    //Toast.makeText(CameraForTops.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+
                     //createCameraPreview();
                     //closeCamera();
                 }

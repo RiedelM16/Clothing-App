@@ -248,7 +248,7 @@ public class CameraForBottoms extends AppCompatActivity {
                     super.onCaptureCompleted(session, request, result);
                     Toast.makeText(CameraForBottoms.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CameraForBottoms.this, ArticleActivity.class );
-                    intent.putExtra("location", "1");
+                    intent.putExtra("location", "2");
                     intent.putExtra("file", file.getAbsolutePath());
                     startActivity(intent);
                     //createCameraPreview();
