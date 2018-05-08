@@ -4,6 +4,7 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
  * Created by Gabri on 3/21/2018.
  */
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -246,7 +247,11 @@ public class CameraForBottoms extends AppCompatActivity {
                 public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
                     Toast.makeText(CameraForBottoms.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
-                    createCameraPreview();
+                    Intent intent = new Intent(CameraForBottoms.this, ArticleActivity.class );
+                    intent.putExtra("location", "2");
+                    intent.putExtra("file", file.getAbsolutePath());
+                    startActivity(intent);
+                    //createCameraPreview();
                 }
             };
             cameraDevice.createCaptureSession(outputSurfaces, new CameraCaptureSession.StateCallback() {

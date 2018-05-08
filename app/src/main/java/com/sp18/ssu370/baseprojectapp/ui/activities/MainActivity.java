@@ -2,7 +2,12 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.Environment;
+
+import android.database.Cursor;
+
+
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences prefs = null;
     LocationManager locationManager;
     String provider;
+    DatabaseHelper articleDB;
+    TagDatabaseHelper tagDB;
 
     private String[] FilePathStrings;
     private String[] FileNameStrings;
@@ -168,7 +175,8 @@ public class MainActivity extends AppCompatActivity {
         prefs = getSharedPreferences("com.mycompany.OutfitMatcher", MODE_PRIVATE);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        articleDB = new DatabaseHelper(this);
+        tagDB = new TagDatabaseHelper(this);
         provider = locationManager.getBestProvider(new Criteria(), false);
         checkLocationPermission();
 /*
@@ -246,6 +254,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageButton RandBtn = findViewById(R.id.RandomBtn);
+        RandBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     Cursor articleData = articleDB.getAllData();
+                     Cursor tagData = tagDB.getAllData();
+                }
+        }
+        );
     }
 
     @Override
