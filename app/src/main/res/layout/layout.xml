@@ -2,10 +2,15 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.layoutClass">
+<android.support.v7.widget.Toolbar
+    android:id="@+id/main_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimaryDark"
+    />
     <Button
         android:id="@+id/TopsBtn"
         android:layout_width="121dp"
@@ -97,8 +102,18 @@
         android:layout_marginBottom="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/newBtn"
+        android:text="@string/tags"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/BackBtn"
+        android:layout_width="61dp"
+        android:layout_height="53dp"
+        android:background="@android:color/transparent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
 </android.support.constraint.ConstraintLayout>

@@ -6,43 +6,152 @@
     android:layout_height="match_parent"
     tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
 
-    <TextView
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ScrollViewPgr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
-    <Button
+    </android.support.v4.view.ViewPager>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:alpha="0.8"
+        android:background="@android:drawable/bottom_bar"
+        android:contentDescription="@string/bar"
+        android:id="@+id/action_bar"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/placeHereShirt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/placeholder"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/placeHereShirt"
+        app:layout_constraintBottom_toTopOf="@id/action_bar"
+        app:layout_constraintTop_toBottomOf="@id/weather_icon"
+        />
+
+    <ImageButton
         android:id="@+id/JacketBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/jacket"
-        app:layout_constraintBottom_toTopOf="@+id/RandomBtn"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/jacket"
+        android:src="@drawable/jacket"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/CameraBtn"
+        app:layout_constraintLeft_toRightOf="@id/RandomBtn"
+        android:layout_marginBottom="5dp"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/RandomBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/random"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/random"
+        android:src="@drawable/dice"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        />
 
     <ImageButton
         android:id="@+id/ClosetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/closet"
+        android:src="@drawable/closet"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?android:attr/floatingToolbarOpenDrawable" android:contentDescription="@string/todo" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <ImageButton
+        android:id="@+id/laundry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/emptylaundry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CameraBtn"
+        app:layout_constraintEnd_toStartOf="@+id/ClosetBtn"
+        android:layout_marginBottom="5dp"
+        />
+
+    <ImageButton
+        android:id="@+id/CameraBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/camera"
+        android:gravity="center_horizontal"
+        android:src="@drawable/camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/laundry"
+        app:layout_constraintStart_toEndOf="@+id/JacketBtn"
+        android:layout_marginBottom="5dp"
+        />
+
+    <TextView
+        android:id="@+id/city_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/current_temperature_field"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/details_field"
+        app:layout_constraintTop_toBottomOf="@+id/city_field" />
+
+    <TextView
+        android:id="@+id/details_field"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/weather_icon"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@id/current_temperature_field"
+        app:layout_constraintTop_toBottomOf="@id/weather_icon" />
+
+    <TextView
+        android:id="@+id/weather_icon"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/details_field" />
 
 </android.support.constraint.ConstraintLayout>
+

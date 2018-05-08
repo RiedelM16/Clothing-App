@@ -6,8 +6,45 @@
     <string name="tops">Tops</string>
     <string name="bottoms">Bottoms</string>
     <string name="shoes">Shoes</string>
-    <string name="accesories">Accesories</string>
-    <string name="outterwear">Outterwear</string>
+    <string name="accesories">Accessories</string>
+    <string name="outterwear">Outerwear</string>
     <string name="dresses">Dresses</string>
+    <string name="tags">Tags</string>
     <string name="newBtn">New +</string>
+    <string name="closet">Closet</string>
+    <string name="desc">Open Closet</string>
+    <string name="camera">Camera</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
+
+    <string name="gl">Girl Large</string>
+    <string name="GIRLSMALL">Girl Small</string>
+    <string name="GIRLMEDIUM">Girl Medium</string>
+    <string name="GUYSMALL">Guy Small</string>
+    <string name="GUYMEDIUM">Guy Medium</string>
+    <string name="GUYLARGE">Guy Large</string>
+
+    <string name="blueLabel">Random Outfit #2</string>
+    <string name="redLabel">Random Outfit #1</string>
+    <string name="greenLabel">Random Outfit #3</string>
+    <string name="backBtn">Back</string>
+    <string name="bar">BAR</string>
+
+    <string name="first_run">Lets start by picking a mannequin</string>
+
+    <string name="take_picture">Take picture</string>
+
+    <string name="shoes_camera">Shoes</string>
+    <string name="tops_camera">Tops</string>
+    <string name="bottoms_camera">Bottoms</string>
+    <string name="accessories_camera">Accessories</string>
+    <string name="dresses_camera">Dresses</string>
+    <string name="outerwear_camera">Outerwear</string>
+
+    <string name="title_location_permission">Location Permissions</string>
+    <string name="text_location_permission">Please Gib Location Permissions</string>
+    <string name="ok">OK</string>
+
+    <string name="placeHereShirt">placeHereShirt</string>
 </resources>
