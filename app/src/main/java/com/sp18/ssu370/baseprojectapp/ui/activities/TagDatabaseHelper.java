@@ -63,6 +63,13 @@ public class TagDatabaseHelper extends SQLiteOpenHelper{
             return true;
     }
 
+    public Cursor getRowbyID(String id){
+        SQLiteDatabase Clothing = this.getWritableDatabase();
+        String search = "select * from "+TABLE_NAME+" where "+COL_1+"=?";
+        Cursor res = Clothing.rawQuery(search, new String[] {id});
+        return res;
+    }
+
 
     public Cursor getAllData() {
         SQLiteDatabase Clothing = this.getWritableDatabase();

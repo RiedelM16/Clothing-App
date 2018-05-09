@@ -235,11 +235,21 @@ public class MainActivity extends AppCompatActivity {
         RandBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                     Cursor articleData = articleDB.getAllData();
-                     Cursor tagData = tagDB.getAllData();
+                     Intent intent = new Intent(MainActivity.this, OutfitActivity.class);
+                     startActivity(intent);
                 }
         }
         );
+
+        ImageButton Laundrybtm = findViewById(R.id.laundry);
+        Laundrybtm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count = articleDB.deleteAll();
+                Toast.makeText(MainActivity.this, "Cleared: " + count + " Articles from DB", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     @Override

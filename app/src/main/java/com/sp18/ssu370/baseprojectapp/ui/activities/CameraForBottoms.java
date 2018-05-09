@@ -207,7 +207,7 @@ public class CameraForBottoms extends AppCompatActivity {
             File directory = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
             directory.mkdirs();
 
-            final File file = new File(Environment.getExternalStorageDirectory()+File.separator+"/OutfitMatcher/bottoms" + "/img" + System.currentTimeMillis () +".jpg");
+            final File file = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms" + "/img" + System.currentTimeMillis () +".jpg");
 
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
@@ -226,6 +226,10 @@ public class CameraForBottoms extends AppCompatActivity {
                     } finally {
                         if (image != null) {
                             image.close();
+                            Intent intent = new Intent(CameraForBottoms.this, ArticleActivity.class );
+                            intent.putExtra("location", "2");
+                            intent.putExtra("file", file.getAbsolutePath());
+                            startActivity(intent);
                         }
                     }
                 }
@@ -246,11 +250,7 @@ public class CameraForBottoms extends AppCompatActivity {
                 @Override
                 public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
-                    Toast.makeText(CameraForBottoms.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CameraForBottoms.this, ArticleActivity.class );
-                    intent.putExtra("location", "2");
-                    intent.putExtra("file", file.getAbsolutePath());
-                    startActivity(intent);
+                    //Toast.makeText(CameraForBottoms.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
                     //createCameraPreview();
                 }
             };

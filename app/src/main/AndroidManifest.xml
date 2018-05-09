@@ -122,6 +122,12 @@
                 <action android:name="android.intent.action.ArticleActivity" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.activities.OutfitActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.OutfitActivity" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

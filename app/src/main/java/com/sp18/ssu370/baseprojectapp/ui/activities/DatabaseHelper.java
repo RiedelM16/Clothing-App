@@ -45,6 +45,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return true;
     }
 
+    public int deleteAll(){
+        SQLiteDatabase Clothing = this.getWritableDatabase();
+        return Clothing.delete(TABLE_NAME,"1",null);
+    }
+
+    public Cursor getRowbyID(String id){
+        SQLiteDatabase Clothing = this.getWritableDatabase();
+        String search = "select * from "+TABLE_NAME+" where ID = ?";
+        Cursor res = Clothing.rawQuery("select * from "+TABLE_NAME+" where ID = ?", new String[] {id});
+        return res;
+    }
+
     public boolean updateData(String id, String tag, String location, String season){
         SQLiteDatabase Clothing = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

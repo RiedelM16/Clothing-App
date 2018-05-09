@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/article_img"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="192dp"
+        android:scaleType="centerInside"
         android:src="@drawable/placeholder"
-        app:layout_constraintBottom_toTopOf="@+id/tag_recycle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tag_recycle"
         android:layout_width="match_parent"
-        android:layout_height="208dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="35dp"
         android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toTopOf="@+id/add_article_db"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/article_img" />
 
     <Button
         android:id="@+id/edit_tag_db"
@@ -30,6 +31,7 @@
         android:layout_marginBottom="4dp"
         android:text="Edit Tags"
         android:windowSoftInputMode="adjustNothing"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -43,12 +45,13 @@
         android:layout_height="57dp"
         android:layout_marginBottom="8dp"
         android:text="ADD TO DB"
+        android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toTopOf="@+id/edit_tag_db"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:windowSoftInputMode="adjustNothing"/>
+        app:layout_constraintTop_toBottomOf="@+id/tag_recycle" />
 
 </android.support.constraint.ConstraintLayout>

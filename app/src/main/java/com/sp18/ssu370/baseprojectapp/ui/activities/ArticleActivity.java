@@ -58,21 +58,8 @@ public class ArticleActivity extends MainActivity {
         BitmapDrawable bd = new BitmapDrawable(res, bitmap);
         ImageView Iview = findViewById(R.id.article_img);
         Iview.setImageDrawable(bd);
-        /*
-        String compPath = getFilesDir()+ path;
-        File imgFile = new File(compPath);
-        if (imgFile.exists()){
-            ImageView Iview = findViewById(R.id.article_img);
-            Iview.setImageURI(Uri.fromFile(imgFile));
+        Iview.setRotation(90);
 
-        }
-        */
-        //Uri imgUri = Uri.fromFile(imgFile);
-        //Glide.with(this).load(imgUri).into(Iview);
-
-        //if (imgFile.exists()) {
-        //    Iview.setImageURI(Uri.fromFile(imgFile));
-        //}
 
 
         final RecyclerView taglist = findViewById(R.id.tag_recycle);
