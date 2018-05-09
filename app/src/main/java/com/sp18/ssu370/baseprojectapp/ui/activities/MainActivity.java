@@ -3,6 +3,7 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import android.net.Uri;
 import android.os.Environment;
 
 import android.database.Cursor;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.graphics.Typeface;
 import android.text.Html;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.Manifest;
 import android.content.Context;
@@ -26,6 +28,8 @@ import android.location.*;
 import android.location.LocationManager;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
+
+import com.bumptech.glide.Glide;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -178,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         randShirt();
         randPants();
 
@@ -217,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new CustomPagerAdapter(this));
 
         View view = findViewById(R.id.placeHereShirt);
+        view.setRotation(90);
         view.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -224,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         View views = findViewById(R.id.placeHerePants);
+        views.setRotation(90);
         views.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -338,12 +345,15 @@ public class MainActivity extends AppCompatActivity {
                FileNameStrings[i] = listFile[i].getName();
            }
            String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops/"+listFile[r].getName();
-           Resources res = getResources();
-           Bitmap bitmap = BitmapFactory.decodeFile(pathName);
-           BitmapDrawable bd = new BitmapDrawable(res, bitmap);
-           View view = findViewById(R.id.placeHereShirt);
+           ImageView view = findViewById(R.id.placeHereShirt);
+           File file = new File(pathName);
+           Glide.with(this).load(Uri.fromFile(file)).into(view);
+           //Resources res = getResources();
+           //Bitmap bitmap = BitmapFactory.decodeFile(pathName);
+           //BitmapDrawable bd = new BitmapDrawable(res, bitmap);
+
            //view.setRotation(90);
-           view.setBackground(bd);
+           //view.setBackground(bd);
 
        }
    }
@@ -366,12 +376,15 @@ public class MainActivity extends AppCompatActivity {
                FileNameString[i] = listFiles[i].getName();
            }
            String pathNames = Environment.getExternalStorageDirectory() + File.separator + "OutfitMatcher/bottoms/" + listFiles[n].getName();
-           Resources ress = getResources();
-           Bitmap bitmaps = BitmapFactory.decodeFile(pathNames);
-           BitmapDrawable bds = new BitmapDrawable(ress, bitmaps);
-           View views = findViewById(R.id.placeHerePants);
+           ImageView views = findViewById(R.id.placeHerePants);
+           File file = new File(pathNames);
+           Glide.with(this).load(Uri.fromFile(file)).into(views);
+           //Resources ress = getResources();
+           //Bitmap bitmaps = BitmapFactory.decodeFile(pathNames);
+           //BitmapDrawable bds = new BitmapDrawable(ress, bitmaps);
+           //View views = findViewById(R.id.placeHerePants);
            //views.setRotation(90);
-           views.setBackground(bds);
+           //views.setBackground(bds);
        }
    }
 }

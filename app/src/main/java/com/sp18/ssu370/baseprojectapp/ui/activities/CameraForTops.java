@@ -5,6 +5,7 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
  */
 import android.content.Context;
 import android.content.Intent;
+import android.media.ExifInterface;
 import android.view.View;
 
 import com.sp18.ssu370.baseprojectapp.R;
@@ -213,6 +214,15 @@ public class CameraForTops extends AppCompatActivity {
                     } finally {
                         if (image != null) {
                             image.close();
+                            try {
+                                ExifInterface exifInterface = new ExifInterface(file.getAbsolutePath());
+                                exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION,
+                                        String.valueOf(90));
+                                exifInterface.saveAttributes();
+                            }
+                            catch (IOException e) {
+                                Log.e(TAG, "Exif error");
+                            }
                             Intent intent = new Intent(CameraForTops.this, ArticleActivity.class );
                             intent.putExtra("location", "1");
                             intent.putExtra("file", file.getAbsolutePath());

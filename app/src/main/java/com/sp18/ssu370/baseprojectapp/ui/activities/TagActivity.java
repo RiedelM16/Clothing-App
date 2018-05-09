@@ -92,13 +92,15 @@ public class TagActivity extends MainActivity {
                 else {
                     mAdapter.swapCursor(tagDB.getAllData());
                     boolean[] cons = mAdapter.getChecked();
-                    cons = new boolean[cons.length];
-                    mAdapter.setChecked(cons);
+                    //cons = new boolean[cons.length];
+                    //mAdapter.setChecked(cons);
                     con = convertToString(cons);
 
                     updateSelectedTags(con, res);
 
                     inserted = tagDB.InsertData(tagName,con);
+                    cons = new boolean[cons.length];
+                    mAdapter.setChecked(cons);
 
                 }
 

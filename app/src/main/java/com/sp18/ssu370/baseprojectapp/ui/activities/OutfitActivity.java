@@ -6,14 +6,17 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.sp18.ssu370.baseprojectapp.Closet.Outfit;
 import com.sp18.ssu370.baseprojectapp.R;
 
+import java.io.File;
 import java.util.Random;
 
 public class OutfitActivity extends MainActivity {
@@ -113,15 +116,23 @@ public class OutfitActivity extends MainActivity {
         BitmapDrawable sel  = new BitmapDrawable(res, bitmap);
 
         if(Articles.getString(2).equals("1")) {
-            Topview.setImageDrawable(art);
-            Botview.setImageDrawable(sel);
+            File file = new File(pathTop);
+            Glide.with(this).load(Uri.fromFile(file)).into(Topview);
+            file = new File(pathBot);
+            Glide.with(this).load(Uri.fromFile(file)).into(Botview);
+            //Topview.setImageDrawable(art);
+            //Botview.setImageDrawable(sel);
         }
         else{
-            Topview.setImageDrawable(sel);
-            Botview.setImageDrawable(art);
+            File file = new File(pathBot);
+            Glide.with(this).load(Uri.fromFile(file)).into(Topview);
+            file = new File(pathTop);
+            Glide.with(this).load(Uri.fromFile(file)).into(Botview);
+
+            //Topview.setImageDrawable(sel);
+            //Botview.setImageDrawable(art);
         }
-        Topview.setRotation(90);
-        Botview.setRotation(90);
+
     }
 
     @Override
@@ -130,6 +141,8 @@ public class OutfitActivity extends MainActivity {
         setContentView(R.layout.selection_view);
         Botview = findViewById(R.id.cloth_bot);
         Topview = findViewById(R.id.cloth_top);
+        Topview.setRotation(90);
+        Botview.setRotation(90);
         GenerateOutfit();
 
 
@@ -139,7 +152,7 @@ public class OutfitActivity extends MainActivity {
             public void onClick(View v) {
                 //Intent intent = new Intent(OutfitActivity.this, OutfitActivity.class);
                 //startActivity(intent);
-                //n GenerateOutfit();
+                GenerateOutfit();
             }
         });
 

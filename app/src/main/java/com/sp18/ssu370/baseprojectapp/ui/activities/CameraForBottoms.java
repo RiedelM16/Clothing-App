@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.media.ExifInterface;
 import android.view.View;
 
 import com.sp18.ssu370.baseprojectapp.R;
@@ -226,6 +227,15 @@ public class CameraForBottoms extends AppCompatActivity {
                     } finally {
                         if (image != null) {
                             image.close();
+                            try {
+                                ExifInterface exifInterface = new ExifInterface(file.getAbsolutePath());
+                                exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION,
+                                        String.valueOf(90));
+                                exifInterface.saveAttributes();
+                            }
+                            catch (IOException e) {
+                                Log.e(TAG, "Exif error");
+                            }
                             Intent intent = new Intent(CameraForBottoms.this, ArticleActivity.class );
                             intent.putExtra("location", "2");
                             intent.putExtra("file", file.getAbsolutePath());
