@@ -8,11 +8,11 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/dresses_rv"
+        android:layout_height="0dp"
         android:layout_width="match_parent"
+        android:scaleType="centerInside"
         app:layout_constraintTop_toBottomOf="@id/main_toolbar"
         app:layout_constraintBottom_toTopOf="@id/NewBtnDresses"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
         />
 
     <android.support.v7.widget.Toolbar

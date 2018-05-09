@@ -21,7 +21,6 @@ import java.util.ArrayList;
  */
 public class DressesActivity extends AppCompatActivity{
 
-
     private static final int CAMERA_REQUEST = 1888;
 
     @Override
@@ -44,7 +43,7 @@ public class DressesActivity extends AppCompatActivity{
             }
         });
 
-        Button newBtn = findViewById(R.id.NewBtnBottoms);
+        Button newBtn = findViewById(R.id.NewBtnDresses);
         newBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

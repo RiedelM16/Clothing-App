@@ -2,12 +2,8 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.os.Environment;
-
 import android.database.Cursor;
-
-
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,18 +26,14 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.sp18.ssu370.baseprojectapp.R;
-
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import java.io.File;
-
 import java.util.Random;
 
-
 public class MainActivity extends AppCompatActivity {
-
 
     TextView cityField,
              detailsField,
@@ -167,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return;
             }
-
         }
     }
 
@@ -187,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         provider = locationManager.getBestProvider(new Criteria(), false);
         checkLocationPermission();
 
-
         weatherFont = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/weathericons-regular-webfont.ttf");
 
         cityField = (TextView)findViewById(R.id.city_field);
@@ -195,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
         currentTemperatureField = (TextView)findViewById(R.id.current_temperature_field);
         weatherIcon = (TextView)findViewById(R.id.weather_icon);
         weatherIcon.setTypeface(weatherFont);
-
 
 
         ImageButton Camera = findViewById(R.id.CameraBtn);
@@ -246,7 +235,6 @@ public class MainActivity extends AppCompatActivity {
                      Cursor tagData = tagDB.getAllData();
                      randPants();
                      randShirt();
-
                 }
         }
         );
@@ -333,9 +321,9 @@ public class MainActivity extends AppCompatActivity {
            View view = findViewById(R.id.placeHereShirt);
            //view.setRotation(90);
            view.setBackground(bd);
-
        }
    }
+
    public void randPants()
    {  files = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
 

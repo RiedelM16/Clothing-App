@@ -19,7 +19,6 @@ import java.util.ArrayList;
 /**
  * Created by Gabri on 3/21/2018.
  */
-
 public class BottomsActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1888;
