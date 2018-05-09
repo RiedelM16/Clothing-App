@@ -52,13 +52,12 @@ public class ArticleActivity extends MainActivity {
         setContentView(R.layout.article_view);
         location = getIntent().getStringExtra("location");
         final String path = getIntent().getStringExtra("file");
-
-        Resources res = getResources();
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
-        BitmapDrawable bd = new BitmapDrawable(res, bitmap);
         ImageView Iview = findViewById(R.id.article_img);
-        Iview.setImageDrawable(bd);
+
+        File file = new File(path);
+        Glide.with(this).load(Uri.fromFile(file)).into(Iview);
         Iview.setRotation(90);
+
 
 
 

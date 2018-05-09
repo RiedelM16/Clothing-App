@@ -141,6 +141,8 @@ public class TagActivity extends MainActivity {
                     //int count = res.getCount();
                     int count = tagDB.deleteAll();
                     mAdapter.swapCursor(tagDB.getAllData());
+                    boolean[] check = new boolean[1];
+                    mAdapter.setChecked(check);
                     Toast.makeText(TagActivity.this, "SUCCESSFULLY DELETED " + count + " TAGS", Toast.LENGTH_SHORT).show();
                 }
             }

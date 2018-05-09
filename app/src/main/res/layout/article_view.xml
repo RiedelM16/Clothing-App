@@ -7,10 +7,14 @@
 
     <ImageView
         android:id="@+id/article_img"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="192dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:scaleType="centerInside"
         android:src="@drawable/placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView

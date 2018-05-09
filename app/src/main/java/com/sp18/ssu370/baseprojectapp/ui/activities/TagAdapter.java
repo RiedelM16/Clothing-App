@@ -56,13 +56,23 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
         if(!mCursor.moveToPosition(position)){
             return;
         }
-        if (pos != 0){
-            boolean[] temp = checked;
-            checked = new boolean[mCursor.getCount()+1];
-            for (int i = 0; i < temp.length;i++){
-                checked[i]= temp[i];
+
+            if(pos != 0) {
+                boolean[] temp = checked;
+                checked = new boolean[mCursor.getCount() + 1];
+                for (int i = 0; i < temp.length; i++) {
+                    checked[i] = temp[i];
+                }
             }
-        }
+            else{
+                if (checked[0]){
+                    checked = new boolean[mCursor.getCount() + 1];
+                    checked[0] = true;
+                }
+                else
+                    checked = new boolean[mCursor.getCount() + 1];
+
+            }
         //checked = new boolean[mCursor.getCount()+1];
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
