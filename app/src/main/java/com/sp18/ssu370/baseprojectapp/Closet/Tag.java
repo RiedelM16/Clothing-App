@@ -8,9 +8,17 @@ import java.util.ArrayList;
 
 public class Tag {
 
+
+
     private String name;
     private ArrayList<String> pro;
     private ArrayList<String> con;
+
+    Tag() {
+        this.name = "";
+        this.pro = new ArrayList<>();
+        this.con = new ArrayList<>();
+    }
 
     Tag(String name, ArrayList<String> prolist, ArrayList<String> conlist){
         this.name = name;
@@ -27,7 +35,9 @@ public class Tag {
         return con;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;

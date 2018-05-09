@@ -24,7 +24,32 @@
         android:alpha="0.8"
         android:background="@android:drawable/bottom_bar"
         android:contentDescription="@string/bar"
+        android:id="@+id/action_bar"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/placeHereShirt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/placeholder"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/placeHereShirt"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/placeHerePants"
+        app:layout_constraintTop_toBottomOf="@id/weather_icon"
+        />
+
+    <ImageView
+        android:id="@+id/placeHerePants"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/placeholder"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/placeHereShirt"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/CameraBtn"
+        app:layout_constraintTop_toBottomOf="@id/placeHereShirt"
+        />
 
     <ImageButton
         android:id="@+id/JacketBtn"
@@ -43,7 +68,6 @@
         android:id="@+id/RandomBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:background="@android:color/transparent"
         android:contentDescription="@string/random"
         android:src="@drawable/dice"
@@ -86,14 +110,12 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/camera"
         android:gravity="center_horizontal"
-
         android:src="@drawable/camera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/laundry"
         app:layout_constraintStart_toEndOf="@+id/JacketBtn"
         android:layout_marginBottom="5dp"
         />
-
 
     <TextView
         android:id="@+id/city_field"

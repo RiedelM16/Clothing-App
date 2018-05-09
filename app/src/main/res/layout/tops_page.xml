@@ -10,8 +10,9 @@
         android:id="@+id/tops_rv"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/main_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/NewBtnBottoms"
+        app:layout_constraintBottom_toTopOf="@id/NewBtnTops"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
         />
 
     <android.support.v7.widget.Toolbar
@@ -26,6 +27,7 @@
         android:layout_height="53dp"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/backBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
