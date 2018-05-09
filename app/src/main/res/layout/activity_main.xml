@@ -30,12 +30,25 @@
     <ImageView
         android:id="@+id/placeHereShirt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/placeholder"
         android:scaleType="centerInside"
         android:contentDescription="@string/placeHereShirt"
-        app:layout_constraintBottom_toTopOf="@id/action_bar"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/placeHerePants"
         app:layout_constraintTop_toBottomOf="@id/weather_icon"
+        />
+
+    <ImageView
+        android:id="@+id/placeHerePants"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/placeholder"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/placeHereShirt"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/CameraBtn"
+        app:layout_constraintTop_toBottomOf="@id/placeHereShirt"
         />
 
     <ImageButton

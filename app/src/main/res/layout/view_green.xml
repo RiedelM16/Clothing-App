@@ -12,6 +12,6 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:contentDescription="@string/green"
-        app:srcCompat="@drawable/men" />
+        />
 
 </LinearLayout>

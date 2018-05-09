@@ -7,14 +7,13 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewB"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:contentDescription="@string/blue"
-        app:srcCompat="@drawable/girllarge" />
-
+        />
 
 
 </android.support.constraint.ConstraintLayout>

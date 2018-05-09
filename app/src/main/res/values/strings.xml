@@ -48,6 +48,8 @@
 
 
     <string name="placeHereShirt">placeHereShirt</string>
+    <string name="placeHereShirtB">placeHereShirtB</string>
+    <string name="imageViewb">imageViewb</string>
     <string name="article">Article</string>
     <string name="tag_title">Tags</string>
     <string name="edit_tag">Type tag name</string>

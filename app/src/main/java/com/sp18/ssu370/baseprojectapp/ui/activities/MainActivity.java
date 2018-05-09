@@ -59,9 +59,14 @@ public class MainActivity extends AppCompatActivity {
     private String[] FilePathStrings;
     private String[] FileNameStrings;
     private File[] listFile;
+    private String[] FilePathString;
+    private String[] FileNameString;
+    private File[] listFiles;
     File file;
+    File files;
 
     Random rand = new Random();
+    Random rands = new Random();
 
     private FusedLocationProviderClient mFusedLocationClient;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -171,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        randShirt();
+        randPants();
 
         prefs = getSharedPreferences("com.mycompany.OutfitMatcher", MODE_PRIVATE);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -179,42 +186,6 @@ public class MainActivity extends AppCompatActivity {
         tagDB = new TagDatabaseHelper(this);
         provider = locationManager.getBestProvider(new Criteria(), false);
         checkLocationPermission();
-/*
-        String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms/img1524521290283.jpg";
-        Resources res = getResources();
-        Bitmap bitmap = BitmapFactory.decodeFile(pathName);
-        BitmapDrawable bd = new BitmapDrawable(res, bitmap);
-        View view = findViewById(R.id.placeHere);
-        view.setBackgroundDrawable(bd);
-*/
-        file = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
-
-        if (file.isDirectory()) {
-            listFile = file.listFiles();
-            // Create a String array for FilePathStrings
-            FilePathStrings = new String[listFile.length];
-            // Create a String array for FileNameStrings
-            FileNameStrings = new String[listFile.length];
-
-            int  n = rand.nextInt(listFile.length);
-
-            for (int i = 0; i < listFile.length; i++) {
-                // Get the path of the image file
-                FilePathStrings[i] = listFile[i].getAbsolutePath();
-                // Get the name image file
-                FileNameStrings[i] = listFile[i].getName();
-
-
-            }
-            String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms/"+listFile[n].getName();
-            Resources res = getResources();
-            Bitmap bitmap = BitmapFactory.decodeFile(pathName);
-            BitmapDrawable bd = new BitmapDrawable(res, bitmap);
-            View view = findViewById(R.id.placeHereShirt);
-            view.setBackgroundDrawable(bd);
-
-        }
-
 
 
         weatherFont = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/weathericons-regular-webfont.ttf");
@@ -243,8 +214,20 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.ScrollViewPgr);
         viewPager.setAdapter(new CustomPagerAdapter(this));
 
-        //ViewPager viewPager1 = findViewById(R.id.ClothesViewPager);
-        //viewPager1.setAdapter(new CustomPagerAdapter1(this));
+        View view = findViewById(R.id.placeHereShirt);
+        view.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                randShirt();
+            }
+        });
+        View views = findViewById(R.id.placeHerePants);
+        views.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                randPants();
+            }
+        });
 
         ImageButton ClosetBtn = findViewById(R.id.ClosetBtn);
         ClosetBtn.setOnClickListener(new View.OnClickListener() {
@@ -261,6 +244,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                      Cursor articleData = articleDB.getAllData();
                      Cursor tagData = tagDB.getAllData();
+                     randPants();
+                     randShirt();
+
                 }
         }
         );
@@ -321,4 +307,60 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+   public void randShirt()
+   {        file = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops");
+
+       if (file.isDirectory()) {
+           listFile = file.listFiles();
+           // Create a String array for FilePathStrings
+           FilePathStrings = new String[listFile.length];
+           // Create a String array for FileNameStrings
+           FileNameStrings = new String[listFile.length];
+
+           int  r = rand.nextInt(listFile.length);
+
+           for (int i = 0; i < listFile.length; i++) {
+               // Get the path of the image file
+               FilePathStrings[i] = listFile[i].getAbsolutePath();
+               // Get the name image file
+               FileNameStrings[i] = listFile[i].getName();
+           }
+           String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops/"+listFile[r].getName();
+           Resources res = getResources();
+           Bitmap bitmap = BitmapFactory.decodeFile(pathName);
+           BitmapDrawable bd = new BitmapDrawable(res, bitmap);
+           View view = findViewById(R.id.placeHereShirt);
+           //view.setRotation(90);
+           view.setBackground(bd);
+
+       }
+   }
+   public void randPants()
+   {  files = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
+
+       if (files.isDirectory()) {
+           listFiles = files.listFiles();
+           // Create a String array for FilePathStrings
+           FilePathString = new String[listFiles.length];
+           // Create a String array for FileNameStrings
+           FileNameString = new String[listFiles.length];
+
+           int n = rands.nextInt(listFiles.length);
+
+           for (int i = 0; i < listFiles.length; i++) {
+               // Get the path of the image file
+               FilePathString[i] = listFiles[i].getAbsolutePath();
+               // Get the name image file
+               FileNameString[i] = listFiles[i].getName();
+           }
+           String pathNames = Environment.getExternalStorageDirectory() + File.separator + "OutfitMatcher/bottoms/" + listFiles[n].getName();
+           Resources ress = getResources();
+           Bitmap bitmaps = BitmapFactory.decodeFile(pathNames);
+           BitmapDrawable bds = new BitmapDrawable(ress, bitmaps);
+           View views = findViewById(R.id.placeHerePants);
+           //views.setRotation(90);
+           views.setBackground(bds);
+       }
+   }
 }

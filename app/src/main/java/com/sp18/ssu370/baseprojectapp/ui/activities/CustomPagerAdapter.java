@@ -11,7 +11,10 @@ import android.view.ViewGroup;
  */
 
 public class CustomPagerAdapter extends PagerAdapter{
+
+
     private Context mContext;
+
 
     public CustomPagerAdapter(Context context) {
         mContext = context;
