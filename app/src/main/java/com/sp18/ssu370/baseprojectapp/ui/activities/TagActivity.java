@@ -92,6 +92,8 @@ public class TagActivity extends MainActivity {
                 else {
                     mAdapter.swapCursor(tagDB.getAllData());
                     boolean[] cons = mAdapter.getChecked();
+                    cons = new boolean[cons.length];
+                    mAdapter.setChecked(cons);
                     con = convertToString(cons);
 
                     updateSelectedTags(con, res);

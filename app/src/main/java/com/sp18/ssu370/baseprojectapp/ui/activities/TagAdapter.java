@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
     private Context mContext;
     private  Cursor mCursor;
     private boolean[] checked;
+
+    private SparseBooleanArray boxen= new SparseBooleanArray();
     public TagAdapter(Context context, Cursor cursor) {
     mContext = context;
     mCursor = cursor;
@@ -32,7 +35,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
 
         public TagViewHolder(View itemView) {
             super(itemView);
-
+            this.setIsRecyclable(false);
             tagname = itemView.findViewById(R.id.tag_name);
             conlist = itemView.findViewById(R.id.tag_con);
             checkBox = itemView.findViewById(R.id.check_box);
@@ -53,7 +56,14 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
         if(!mCursor.moveToPosition(position)){
             return;
         }
-        checked = new boolean[mCursor.getCount()+1];
+        if (pos != 0){
+            boolean[] temp = checked;
+            checked = new boolean[mCursor.getCount()+1];
+            for (int i = 0; i < temp.length;i++){
+                checked[i]= temp[i];
+            }
+        }
+        //checked = new boolean[mCursor.getCount()+1];
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -71,7 +81,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
         String con = mCursor.getString(2);
         holder.tagname.setText(name);
         holder.conlist.setText(con);
-        holder.checkBox.setChecked(false);
+        holder.checkBox.setChecked(checked[pos]);
 
     }
 
@@ -90,5 +100,9 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagViewHolder> {
 
     public boolean[] getChecked() {
         return checked;
+    }
+
+    public void setChecked(boolean[] check){
+        checked = check;
     }
 }
