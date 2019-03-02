@@ -29,27 +29,29 @@
 
     <ImageView
         android:id="@+id/placeHereShirt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
-
-        android:scaleType="centerInside"
-        android:contentDescription="@string/placeHereShirt"
-        android:layout_marginTop="10dp"
+        android:foregroundGravity="center"
         android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/placeHereShirt"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@id/placeHerePants"
-        app:layout_constraintTop_toBottomOf="@id/weather_icon"
-        />
+        app:layout_constraintTop_toBottomOf="@id/weather_icon" />
 
     <ImageView
         android:id="@+id/placeHerePants"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
-
-        android:scaleType="centerInside"
+        android:foregroundGravity="center"
+        android:layout_marginTop="36dp"
         android:contentDescription="@string/placeHereShirt"
-        app:layout_constraintBottom_toTopOf="@id/action_bar"
-        app:layout_constraintTop_toBottomOf="@id/placeHereShirt"
-        />
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/placeHereShirt" />
 
     <ImageButton
         android:id="@+id/JacketBtn"

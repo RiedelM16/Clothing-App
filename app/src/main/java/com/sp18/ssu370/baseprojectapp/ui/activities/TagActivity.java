@@ -24,11 +24,14 @@ public class TagActivity extends MainActivity {
 
     private TagAdapter mAdapter;
 
-    public String convertToString(boolean[] bool){
+    public String convertToString(boolean[] bool, boolean[] pro){
         StringBuffer con = new StringBuffer();
         for (int i = 0; i < bool.length; i++){
             if (bool[i]){
                 con.append("1");
+            }
+            else if(pro[i]){
+                con.append("2");
             }
             else{
                 con.append("0");
@@ -39,23 +42,42 @@ public class TagActivity extends MainActivity {
 
     public void updateSelectedTags(String con, Cursor res){
         String newcon;
-        for (int i = 0; i < con.length(); i++)
+        StringBuffer buffer;
+        boolean update;
+        for (int i = 0; i < con.length(); i++) {
 
-            if (con.charAt(i) == '1'){
+            if (con.charAt(i) == '1') {
                 res.moveToPosition(i);
                 newcon = res.getString(2);
-                StringBuffer buffer = new StringBuffer();
-                for (int j = 0; j < res.getCount()- newcon.length(); j++){
+                buffer = new StringBuffer();
+                for (int j = 0; j < res.getCount() - newcon.length(); j++) {
                     buffer.append('0');
                 }
                 buffer.append('1');
                 newcon += buffer.toString();
-                boolean update = tagDB.updateData(res.getString(0),res.getString(1), newcon);
-                if (update){
+                update = tagDB.updateData(res.getString(0), res.getString(1), newcon);
+                if (update) {
+                    //Toast.makeText(TagActivity.this, "Update WAS GOOD", Toast.LENGTH_SHORT).show();
+                }
+            }
+            if (con.charAt(i) == '2') {
+                res.moveToPosition(i);
+                newcon = res.getString(2);
+                buffer = new StringBuffer();
+                for (int j = 0; j < res.getCount() - newcon.length(); j++) {
+                    buffer.append('0');
+                }
+                buffer.append('2');
+                newcon += buffer.toString();
+                update = tagDB.updateData(res.getString(0), res.getString(1), newcon);
+                if (update) {
                     //Toast.makeText(TagActivity.this, "Update WAS GOOD", Toast.LENGTH_SHORT).show();
                 }
 
             }
+        }
+
+
 
     }
 
@@ -92,9 +114,10 @@ public class TagActivity extends MainActivity {
                 else {
                     mAdapter.swapCursor(tagDB.getAllData());
                     boolean[] cons = mAdapter.getChecked();
+                    boolean[] pros = mAdapter.getPro();
                     //cons = new boolean[cons.length];
                     //mAdapter.setChecked(cons);
-                    con = convertToString(cons);
+                    con = convertToString(cons, pros);
 
                     updateSelectedTags(con, res);
 

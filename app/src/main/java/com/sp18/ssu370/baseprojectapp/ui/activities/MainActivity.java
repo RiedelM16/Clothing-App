@@ -45,6 +45,8 @@ import java.io.File;
 
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     String provider;
     DatabaseHelper articleDB;
     TagDatabaseHelper tagDB;
+
 
     private String[] FilePathStrings;
     private String[] FileNameStrings;
@@ -183,8 +186,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        randShirt();
-        randPants();
+
+
+
 
         prefs = getSharedPreferences("com.mycompany.OutfitMatcher", MODE_PRIVATE);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -202,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
         currentTemperatureField = (TextView)findViewById(R.id.current_temperature_field);
         weatherIcon = (TextView)findViewById(R.id.weather_icon);
         weatherIcon.setTypeface(weatherFont);
-
+        randShirt();
+        randPants();
 
 
         ImageButton Camera = findViewById(R.id.CameraBtn);
@@ -278,7 +283,8 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-
+        randShirt();
+        randPants();
         if (prefs.getBoolean("firstrun", true)) {
             // Do first run stuff here then set 'firstrun' as false
             setContentView(R.layout.first_time_run);
@@ -327,64 +333,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
    public void randShirt()
-   {        file = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops");
-
-       if (file.isDirectory()) {
-           listFile = file.listFiles();
-           // Create a String array for FilePathStrings
-           FilePathStrings = new String[listFile.length];
-           // Create a String array for FileNameStrings
-           FileNameStrings = new String[listFile.length];
-
-           int  r = rand.nextInt(listFile.length);
-
-           for (int i = 0; i < listFile.length; i++) {
-               // Get the path of the image file
-               FilePathStrings[i] = listFile[i].getAbsolutePath();
-               // Get the name image file
-               FileNameStrings[i] = listFile[i].getName();
+   {
+       if (!articleDB.empty()) {
+           Cursor Articles = articleDB.getAllData();
+           while (true) {
+               int value = (int) System.currentTimeMillis();
+               Articles.moveToPosition(abs(value % Articles.getCount()));
+               if (Articles.getString(2).equals("1") || Articles.getCount() == 1)
+                   break;
            }
-           String pathName = Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/tops/"+listFile[r].getName();
-           ImageView view = findViewById(R.id.placeHereShirt);
-           File file = new File(pathName);
-           Glide.with(this).load(Uri.fromFile(file)).into(view);
-           //Resources res = getResources();
-           //Bitmap bitmap = BitmapFactory.decodeFile(pathName);
-           //BitmapDrawable bd = new BitmapDrawable(res, bitmap);
-
-           //view.setRotation(90);
-           //view.setBackground(bd);
-
+           if (Articles.getString(2).equals("1")) {
+               String pathName = Articles.getString(3);
+               ImageView view = findViewById(R.id.placeHereShirt);
+               File file = new File(pathName);
+               Glide.with(this).load(Uri.fromFile(file)).into(view);
+           }
        }
    }
-   public void randPants()
-   {  files = new File(Environment.getExternalStorageDirectory()+File.separator+"OutfitMatcher/bottoms");
 
-       if (files.isDirectory()) {
-           listFiles = files.listFiles();
-           // Create a String array for FilePathStrings
-           FilePathString = new String[listFiles.length];
-           // Create a String array for FileNameStrings
-           FileNameString = new String[listFiles.length];
+   public void randPants() {
 
-           int n = rands.nextInt(listFiles.length);
-
-           for (int i = 0; i < listFiles.length; i++) {
-               // Get the path of the image file
-               FilePathString[i] = listFiles[i].getAbsolutePath();
-               // Get the name image file
-               FileNameString[i] = listFiles[i].getName();
+       if (!articleDB.empty()) {
+           Cursor Articles = articleDB.getAllData();
+           while (true) {
+               int value = (int) System.currentTimeMillis();
+               Articles.moveToPosition(abs(value % Articles.getCount()));
+               if (Articles.getString(2).equals("2" ) || Articles.getCount() == 1)
+                   break;
            }
-           String pathNames = Environment.getExternalStorageDirectory() + File.separator + "OutfitMatcher/bottoms/" + listFiles[n].getName();
-           ImageView views = findViewById(R.id.placeHerePants);
-           File file = new File(pathNames);
-           Glide.with(this).load(Uri.fromFile(file)).into(views);
-           //Resources ress = getResources();
-           //Bitmap bitmaps = BitmapFactory.decodeFile(pathNames);
-           //BitmapDrawable bds = new BitmapDrawable(ress, bitmaps);
-           //View views = findViewById(R.id.placeHerePants);
-           //views.setRotation(90);
-           //views.setBackground(bds);
+           if (Articles.getString(2).equals("2" )) {
+               String pathNames = Articles.getString(3);
+               ImageView views = findViewById(R.id.placeHerePants);
+               File file = new File(pathNames);
+               Glide.with(this).load(Uri.fromFile(file)).into(views);
+           }
        }
+
    }
+
+
 }

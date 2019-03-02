@@ -19,6 +19,8 @@ import com.sp18.ssu370.baseprojectapp.R;
 import java.io.File;
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class OutfitActivity extends MainActivity {
 
     private ImageView Botview;
@@ -69,6 +71,7 @@ public class OutfitActivity extends MainActivity {
                 }
             }
         }
+        TAG.close();
         return convertToString(bool);
     }
 
@@ -94,26 +97,87 @@ public class OutfitActivity extends MainActivity {
             }
             i++;
         }
+
+        db.close();
+        art.close();
         if (matched)
             return --i;
         return 0;
     }
 
-    public void GenerateOutfit(){
+    public int getScore(String tags1, String tags2){
+        int score = 0;
+        Cursor TAG = tagDB.getAllData();
+        for (int i = 0; i < tags1.length(); i++){
+            if (tags1.charAt(i) =='1'){
+                TAG.moveToPosition(i);
+                String test = TAG.getString(2);
+                for (int j = 0; j < test.length();j++) {
+                    if (test.charAt(j) == '2') {
+                        if (tags2.length() >= j && tags2.charAt(j) == '1')
+                            score += 1;
+                    }
+                }
+            }
+        }
+        TAG.close();
+        return score;
+    }
+
+    public int findBestMatch(Cursor ArticleToMatch){
+        Cursor db = tagDB.getAllData();
+        Cursor art = articleDB.getAllData();
+
+        int[] score = new int[art.getCount()];
+        String tags = ArticleToMatch.getString(1);
+        String tagsconlist = creatConString(tags, db.getCount());
+        for (int i = 0; i < art.getCount(); i++){
+            art.moveToPosition(i);
+            if (!art.getString(2).equals(ArticleToMatch.getString(2))){
+                db.moveToPosition(i);
+                String contotest = art.getString(1);
+                contotest = creatConString(contotest, db.getCount());
+                if (checkMatch(tags, contotest) && checkMatch(art.getString(1), tagsconlist)){
+                    score[i] = getScore(ArticleToMatch.getString(1), art.getString(1));
+                }
+                //matched = checkMatch(tags, contotest);
+            }
+
+        }
+
+        int max = -1;
+        int maxindex = 0;
+        for (int i = 0; i < score.length; i++){
+            if (score[i] > max){
+                max = score[i];
+                maxindex = i;
+            }
+        }
+        db.close();
+        art.close();
+        return maxindex;
+    }
+
+    public void GenerateOutfit(int type){
         Cursor Articles = articleDB.getAllData();
         Cursor match = articleDB.getAllData();
         Random rand = new Random();
         int value = (int) System.currentTimeMillis ();
-        Articles.moveToPosition(value % Articles.getCount());
-        match.moveToPosition(findMatch(Articles));
+        Articles.moveToPosition(abs(value % Articles.getCount()));
+        if (type == 1)
+            match.moveToPosition(findMatch(Articles));
+        if (type == 2)
+            match.moveToPosition(findBestMatch(Articles));
         String pathBot = match.getString(3);
         String pathTop = Articles.getString(3);
 
+        /*
         Resources res = getResources();
         Bitmap bitmap = BitmapFactory.decodeFile(pathTop);
         BitmapDrawable art = new BitmapDrawable(res, bitmap);
         bitmap = BitmapFactory.decodeFile(pathBot);
         BitmapDrawable sel  = new BitmapDrawable(res, bitmap);
+        */
 
         if(Articles.getString(2).equals("1")) {
             File file = new File(pathTop);
@@ -132,6 +196,8 @@ public class OutfitActivity extends MainActivity {
             //Topview.setImageDrawable(sel);
             //Botview.setImageDrawable(art);
         }
+        Articles.close();
+        match.close();
 
     }
 
@@ -143,51 +209,27 @@ public class OutfitActivity extends MainActivity {
         Topview = findViewById(R.id.cloth_top);
         Topview.setRotation(90);
         Botview.setRotation(90);
-        GenerateOutfit();
+        GenerateOutfit(1);
 
 
+        Button bestmatch = findViewById(R.id.bestmatch);
+        bestmatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GenerateOutfit(2);
+            }
+        });
         Button reroll = findViewById(R.id.reroll);
         reroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(OutfitActivity.this, OutfitActivity.class);
                 //startActivity(intent);
-                GenerateOutfit();
+                GenerateOutfit(1);
             }
         });
 
-        /*
-        Cursor Articles = articleDB.getAllData();
-        Cursor match = articleDB.getAllData();
-        Random rand = new Random();
-        int value = rand.nextInt(Articles.getCount());
-        Articles.moveToPosition(value);
 
-
-
-        match.moveToPosition(findMatch(Articles));
-        String pathBot = match.getString(3);
-        String pathTop = Articles.getString(3);
-
-        Resources res = getResources();
-        Bitmap bitmap = BitmapFactory.decodeFile(pathTop);
-        BitmapDrawable art = new BitmapDrawable(res, bitmap);
-        bitmap = BitmapFactory.decodeFile(pathBot);
-        BitmapDrawable sel  = new BitmapDrawable(res, bitmap);
-
-
-
-        if(Articles.getString(2).equals("1")) {
-            Topview.setImageDrawable(art);
-            Botview.setImageDrawable(sel);
-        }
-        else{
-            Topview.setImageDrawable(sel);
-            Botview.setImageDrawable(art);
-        }
-        Topview.setRotation(90);
-        Botview.setRotation(90);
-        */
 
 
 

@@ -25,7 +25,7 @@ import java.io.File;
 public class ArticleActivity extends MainActivity {
 
     private String location;
-    private TagAdapter mAdapter;
+    private ArticleAdapter mAdapter;
 
     public String getTags(boolean[] bool){
         StringBuffer tags = new StringBuffer();
@@ -65,7 +65,7 @@ public class ArticleActivity extends MainActivity {
         taglist.setLayoutManager(new LinearLayoutManager(this));
 
 
-        mAdapter = new TagAdapter(this, tagDB.getAllData());
+        mAdapter = new ArticleAdapter(this, tagDB.getAllData());
         taglist.setAdapter(mAdapter);
 
         Button edittag = findViewById(R.id.edit_tag_db);

@@ -74,4 +74,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         Cursor results = Clothing.rawQuery("select * from "+TABLE_NAME,null);
         return results;
     }
+
+    public boolean empty(){
+        SQLiteDatabase Clothing = this.getWritableDatabase();
+        Cursor results = Clothing.rawQuery("select * from "+TABLE_NAME,null);
+        if (results.getCount() == 0)
+            return true;
+        return false;
+    }
 }

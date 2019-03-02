@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BaseProjectApp.iml" filepath="$PROJECT_DIR$/BaseProjectApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Clothing.iml" filepath="$PROJECT_DIR$/Clothing.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../../Gabri/Desktop/School/2018 Spring/BaseProjectApp/backup.iml" filepath="$PROJECT_DIR$/../../../../Gabri/Desktop/School/2018 Spring/BaseProjectApp/backup.iml" />
     </modules>
   </component>
 </project>
